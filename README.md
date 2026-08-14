@@ -27,6 +27,16 @@ npm start
 
 Then open `http://localhost:4173`.
 
+## Project files
+
+Everything related to TapTime is kept in this repository:
+
+- `assets/concepts/` — original product and visual concepts
+- `cad/` — editable enclosure source plus downloadable GLB, STL, and print pack
+- `docs/` — the website proposal PDF, archived proposal versions, and PDF QA renders
+- `tools/` — the Swift source used to generate the proposal PDF
+- `index.html`, `styles.css`, and `app.js` — the product website
+
 ## MVP architecture
 
 The NFC tag should contain a location-specific HTTPS link, not employee data. The web flow authenticates the employee, asks them to confirm check-in or check-out, and sends the event to the server. A passive tag is excellent for testing behavior, but it can be copied; production deployments needing stronger proof should use a powered reader with device identity and signed events.
