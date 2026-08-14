@@ -1,0 +1,12 @@
+{
+  "name": "taptime-mvp",
+  "private": true,
+  "scripts": {
+    "build:stl": "node cad/build-stl.mjs",
+    "start": "python3 -m http.server 4173"
+  },
+  "dependencies": {
+    "@jscad/modeling": "^2.13.0",
+    "@jscad/stl-serializer": "^2.1.23"
+  }
+}
