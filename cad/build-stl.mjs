@@ -6,7 +6,7 @@ import { serialize } from '@jscad/stl-serializer';
 const { primitives, booleans, transforms, extrusions, text, geometries } = modeling;
 const { roundedRectangle, cylinder, cuboid } = primitives;
 const { subtract, union } = booleans;
-const { translate } = transforms;
+const { translate, mirrorY } = transforms;
 const { extrudeLinear, extrudeRectangular } = extrusions;
 const { vectorText } = text;
 const { path2 } = geometries;
@@ -19,12 +19,15 @@ const pegPositions = [[-21.5,-21.5],[-21.5,21.5],[21.5,-21.5],[21.5,21.5]];
 const outer = roundedPrism([56,56,11],9,5.5);
 const inner = roundedPrism([50,50,8.1],6,7.05);
 const sockets = pegPositions.map(([x,y]) => cylinder({radius:1.75,height:5.8,segments:36,center:[x,y,8.4]}));
-const brandSegments = vectorText({height:6.5,letterSpacing:1.12},'TAPTIME');
+const brandSegments = vectorText({height:3.4,letterSpacing:1.06},'TAPTIME');
 const brandPoints = brandSegments.flat();
 const brandCenterX = (Math.min(...brandPoints.map(([x])=>x))+Math.max(...brandPoints.map(([x])=>x)))/2;
 const brandCenterY = (Math.min(...brandPoints.map(([,y])=>y))+Math.max(...brandPoints.map(([,y])=>y)))/2;
-const brandStrokes = brandSegments.map((segment)=>extrudeRectangular({size:0.72,height:1.05,segments:12,corners:'round'},path2.fromPoints({closed:false},segment)));
-const brandMark = move([-brandCenterX,-brandCenterY-7,-0.15],union(...brandStrokes));
+const brandStrokes = brandSegments.map((segment)=>extrudeRectangular({size:0.45,height:0.75,segments:12,corners:'round'},path2.fromPoints({closed:false},segment)));
+const centeredBrand = move([-brandCenterX,-brandCenterY,-0.1],union(...brandStrokes));
+// The front case prints face-down and is flipped for use; pre-flip Y so the
+// finished wordmark reads normally from the outside.
+const brandMark = mirrorY(centeredBrand);
 const cradleOuter = cylinder({radius:15,height:1.8,segments:72,center:[0,0,3.9]});
 const cradleInner = cylinder({radius:12.8,height:2,segments:72,center:[0,0,3.9]});
 const front = union(subtract(outer,inner,brandMark,...sockets),subtract(cradleOuter,cradleInner));

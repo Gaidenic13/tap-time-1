@@ -10,7 +10,7 @@ The folder also includes `taptime-solid-case.glb`, an assembled, material-colore
 
 - Print the front case face-down and the rear case flat-side-down.
 - Material: PLA or PETG; 0.20 mm layers; 3 walls; 15–20% infill; no supports.
-- The recessed `TAPTIME` wordmark is part of the front-case mesh and prints automatically—no sticker is needed.
+- The subtle, centered `TAPTIME` wordmark is recessed 0.75 mm into the front-case mesh and prints automatically—no sticker is needed.
 - Insert a 25 mm NTAG213 or NTAG215 sticker into the circular cradle inside the front case.
 - Program the tag with the unique HTTPS check-in URL for that workplace.
 - Optional: glue two 15 × 3 mm neodymium magnets into the rear pockets, or use two countersunk wall screws.
