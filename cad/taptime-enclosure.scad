@@ -15,6 +15,9 @@ module front_case() {
     // Four sockets receive the rear-case snap pegs.
     for(x=[-21.5,21.5], y=[-21.5,21.5])
       translate([x,y,5.5]) cylinder(h=5.8,d=3.5);
+    // Recessed wordmark prints as part of the case—no label required.
+    translate([0,-7,-0.1]) linear_extrude(1.05)
+      text("TAPTIME",size=6.5,halign="center",valign="center",font="Arial:style=Bold");
   }
   // Internal NFC cradle. The 25 mm sticker sits inside the case.
   translate([0,0,3]) difference() {

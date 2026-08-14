@@ -3,11 +3,13 @@ import path from 'node:path';
 import modeling from '@jscad/modeling';
 import { serialize } from '@jscad/stl-serializer';
 
-const { primitives, booleans, transforms, extrusions } = modeling;
+const { primitives, booleans, transforms, extrusions, text, geometries } = modeling;
 const { roundedRectangle, cylinder, cuboid } = primitives;
 const { subtract, union } = booleans;
 const { translate } = transforms;
-const { extrudeLinear } = extrusions;
+const { extrudeLinear, extrudeRectangular } = extrusions;
+const { vectorText } = text;
+const { path2 } = geometries;
 const out = new URL('./output/', import.meta.url);
 
 const move = (xyz, shape) => translate(xyz, shape);
@@ -17,9 +19,15 @@ const pegPositions = [[-21.5,-21.5],[-21.5,21.5],[21.5,-21.5],[21.5,21.5]];
 const outer = roundedPrism([56,56,11],9,5.5);
 const inner = roundedPrism([50,50,8.1],6,7.05);
 const sockets = pegPositions.map(([x,y]) => cylinder({radius:1.75,height:5.8,segments:36,center:[x,y,8.4]}));
+const brandSegments = vectorText({height:6.5,letterSpacing:1.12},'TAPTIME');
+const brandPoints = brandSegments.flat();
+const brandCenterX = (Math.min(...brandPoints.map(([x])=>x))+Math.max(...brandPoints.map(([x])=>x)))/2;
+const brandCenterY = (Math.min(...brandPoints.map(([,y])=>y))+Math.max(...brandPoints.map(([,y])=>y)))/2;
+const brandStrokes = brandSegments.map((segment)=>extrudeRectangular({size:0.72,height:1.05,segments:12,corners:'round'},path2.fromPoints({closed:false},segment)));
+const brandMark = move([-brandCenterX,-brandCenterY-7,-0.15],union(...brandStrokes));
 const cradleOuter = cylinder({radius:15,height:1.8,segments:72,center:[0,0,3.9]});
 const cradleInner = cylinder({radius:12.8,height:2,segments:72,center:[0,0,3.9]});
-const front = union(subtract(outer,inner,...sockets),subtract(cradleOuter,cradleInner));
+const front = union(subtract(outer,inner,brandMark,...sockets),subtract(cradleOuter,cradleInner));
 
 const rearBase = roundedPrism([56,56,6],9,3);
 const locatingLip = roundedPrism([49.5,49.5,2],5.75,7);
