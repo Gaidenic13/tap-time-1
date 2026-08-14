@@ -4,7 +4,6 @@ import modeling from '@jscad/modeling';
 import { serialize } from '@jscad/stl-serializer';
 
 const { primitives, booleans, transforms, extrusions } = modeling;
-
 const { roundedRectangle, cylinder, cuboid } = primitives;
 const { subtract, union } = booleans;
 const { translate } = transforms;
@@ -12,28 +11,30 @@ const { extrudeLinear } = extrusions;
 const out = new URL('./output/', import.meta.url);
 
 const move = (xyz, shape) => translate(xyz, shape);
-const pegPositions = [[-22,-22],[-22,22],[22,-22],[22,22]];
-const roundedPrism = (size, radius, centerZ) => move([0,0,centerZ - size[2] / 2], extrudeLinear({ height:size[2] }, roundedRectangle({ size:[size[0],size[1]], roundRadius:radius, segments:48 })));
+const roundedPrism = (size, radius, centerZ) => move([0,0,centerZ-size[2]/2], extrudeLinear({height:size[2]}, roundedRectangle({size:[size[0],size[1]],roundRadius:radius,segments:48})));
+const pegPositions = [[-21.5,-21.5],[-21.5,21.5],[21.5,-21.5],[21.5,21.5]];
 
-const outer = roundedPrism([60,60,8], 8, 4);
-const inner = roundedPrism([55.2,55.2,6.2], 5.6, 5.1);
-const tagPocket = cylinder({ radius:12.75, height:1.25, segments:72, center:[0,0,1.425] });
-const sockets = pegPositions.map(([x,y]) => cylinder({ radius:1.725, height:6.3, segments:36, center:[x,y,4.85] }));
-const face = subtract(outer, inner, tagPocket, ...sockets);
+const outer = roundedPrism([56,56,11],9,5.5);
+const inner = roundedPrism([50,50,8.1],6,7.05);
+const sockets = pegPositions.map(([x,y]) => cylinder({radius:1.75,height:5.8,segments:36,center:[x,y,8.4]}));
+const cradleOuter = cylinder({radius:15,height:1.8,segments:72,center:[0,0,3.9]});
+const cradleInner = cylinder({radius:12.8,height:2,segments:72,center:[0,0,3.9]});
+const front = union(subtract(outer,inner,...sockets),subtract(cradleOuter,cradleInner));
 
-const plateBase = roundedPrism([54.6,54.6,4], 5.5, 2);
-const pegs = pegPositions.map(([x,y]) => cylinder({ radius:1.5, height:3.1, segments:36, center:[x,y,5.55] }));
-let plate = union(plateBase, ...pegs);
+const rearBase = roundedPrism([56,56,6],9,3);
+const locatingLip = roundedPrism([49.5,49.5,2],5.75,7);
+const pegs = pegPositions.map(([x,y]) => cylinder({radius:1.5,height:4.1,segments:36,center:[x,y,8.05]}));
+let rear = union(rearBase,locatingLip,...pegs);
 const screwHoles = [-16,16].flatMap((y) => [
-  cylinder({ radius:2.1, height:4.4, segments:48, center:[0,y,2] }),
-  cylinder({ radiusStart:2.1, radiusEnd:4.1, height:2.2, segments:48, center:[0,y,3.1] })
+  cylinder({radius:2.1,height:8.4,segments:48,center:[0,y,4]}),
+  cylinder({radiusStart:4.1,radiusEnd:2.1,height:2.4,segments:48,center:[0,y,1.2]})
 ]);
-const notch = cuboid({ size:[14,8,5], center:[0,-27,2.5] });
-plate = subtract(plate, ...screwHoles, notch);
+const magnetPockets = [-16,16].map((x) => cylinder({radius:7.7,height:3.2,segments:64,center:[x,0,2.4]}));
+const notch = cuboid({size:[13,7,4],center:[0,-28,5]});
+rear = subtract(rear,...screwHoles,...magnetPockets,notch);
 
-await fs.mkdir(out, { recursive:true });
-for (const [name, solid] of [['taptime-face-shell.stl', face], ['taptime-wall-plate.stl', plate]]) {
-  const data = serialize({ binary:false }, solid);
-  await fs.writeFile(new URL(name, out), data.join(''));
+await fs.mkdir(out,{recursive:true});
+for (const [name,solid] of [['taptime-front-case.stl',front],['taptime-rear-case.stl',rear]]) {
+  await fs.writeFile(new URL(name,out),serialize({binary:false},solid).join(''));
 }
-console.log(`Created printable STL files in ${path.resolve('cad/output')}`);
+console.log(`Created solid-case STL files in ${path.resolve('cad/output')}`);
