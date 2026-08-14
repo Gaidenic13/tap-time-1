@@ -6,6 +6,8 @@ A solid, cased passive-NFC attendance checkpoint prototype and product landing p
 
 Use the ready-made files in `cad/output/` or open `cad/taptime-enclosure.scad` to adjust dimensions.
 
+The folder also includes `taptime-solid-case.glb`, an assembled, material-colored model for web viewing, presentations, Blender, and other GLB-compatible tools.
+
 - Print the front case face-down and the rear case flat-side-down.
 - Material: PLA or PETG; 0.20 mm layers; 3 walls; 15–20% infill; no supports.
 - Insert a 25 mm NTAG213 or NTAG215 sticker into the circular cradle inside the front case.
