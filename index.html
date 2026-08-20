@@ -3,302 +3,282 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#F3F1EC">
-  <title>TapTime — Tap in. Tap out. Clear records.</title>
-  <meta name="description" content="A physical NFC attendance checkpoint for modern workplaces and clinics.">
+  <meta name="theme-color" content="#F5F3FB">
+  <title>TapTime — Attendance software with a physical checkpoint</title>
+  <meta name="description" content="TapTime digitizes attendance with one tap at the door. No errors, no chasing, payroll-ready records.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <script type="module" src="vendor/model-viewer.min.js"></script>
 </head>
 <body>
   <div id="webgl-container" aria-hidden="true"></div>
+
+  <div class="topbar">
+    <div class="shell"><strong data-ro="Echipa de pilot:">Pilot team:</strong> <a href="mailto:pilots@taptime.app">pilots@taptime.app</a> <a href="#contact" data-ro="Solicită demo">Request a demo</a></div>
+  </div>
+
   <header class="nav shell">
     <a class="brand" href="#top" aria-label="TapTime home"><span class="brand-mark">T</span><span>TapTime</span></a>
     <nav aria-label="Primary navigation">
-      <a href="#how">How it works</a><a href="#different">Why TapTime</a><a href="#hardware">Hardware</a><a href="#rollout">Rollout</a><a href="#faq">FAQ</a><a href="#contact">Contact</a>
+      <a href="#methods" data-ro="Metode de pontaj">Tap methods</a><a href="#record" data-ro="Condica">The record</a><a href="#pilot">Pilot</a><a href="#faq" data-ro="Întrebări">FAQ</a>
     </nav>
-    <a class="button button-small" href="TapTime-Workplace-Attendance-Proposal.pdf" target="_blank">View proposal <span>↗</span></a>
+    <div class="nav-actions">
+      <div class="lang-switch" role="group" aria-label="Language">
+        <button type="button" data-lang="en" class="active">EN</button>
+        <button type="button" data-lang="ro">RO</button>
+      </div>
+      <a class="button button-small" href="#demo" data-ro="Solicită demo">Request a demo</a>
+    </div>
   </header>
 
   <main id="top">
     <section class="hero shell">
-      <div class="hero-copy">
-        <p class="eyebrow"><span></span> NFC attendance, made tangible</p>
-        <h1>Tap in.<br>Tap out.<br><em>Clear records.</em></h1>
-        <p class="hero-lead">TapTime is the physical checkpoint that turns one phone tap into a trustworthy attendance event for your whole team—without surveillance, batteries, or kiosk training. Until they tap back out.</p>
-        <div class="hero-actions">
-          <a class="button" href="#contact">Talk to us <span>→</span></a>
-          <a class="text-link" href="#hardware">Explore the device <span>↓</span></a>
-        </div>
-        <div class="proof"><span class="pulse"></span><strong>Solid-case prototype</strong><span>56 × 56 × 17 mm · Enclosed NFC · Magnetic or wall mounted</span></div>
-      </div>
-      <div class="device-stage" aria-label="TapTime NFC device concept">
+      <a class="offer-pill" href="#offer-banner" data-ro="Ofertă de bun venit — pilotul tău de 4 săptămâni, complet ghidat →">Welcome offer — your 4-week pilot, fully guided →</a>
+      <h1><em data-ro="Pontaj, făcut fizic">Attendance, made physical</em><span data-ro="Fără erori, fără alergătură">No errors, no chasing</span></h1>
+      <p class="hero-lead" data-ro="Cu TapTime, punctul fizic de pontaj pentru locuri de muncă reale, prezența zilnică se înregistrează singură la ușă, iar condica de prezență e gata cu un singur click.">With TapTime, the tap-to-check-in checkpoint for real workplaces, daily attendance records itself at the door and the presence book is ready with a single click.</p>
+      <p class="proof-line"><span class="stars">★★★★★</span> <span data-ro="Prototip deschis · Îl printezi singur · Condică gata de salarizare">Open prototype · Print it yourself · Payroll-ready records</span></p>
+      <form class="demo-form" id="demo" aria-label="Request a demo">
+        <input type="tel" name="phone" placeholder="Phone number*" data-ro-placeholder="Număr de telefon*" required>
+        <input type="email" name="email" placeholder="Email*" data-ro-placeholder="Email*" required>
+        <button class="button" type="submit" data-ro="Solicită demo →">Request a demo →</button>
+        <label class="consent"><input type="checkbox" required> <span data-ro="Sunt de acord ca aceste date să fie folosite pentru a fi contactat despre un demo TapTime. Nimic altceva, fără liste.">I agree that these details are used to contact me about a TapTime demo. Nothing else, no lists.</span></label>
+      </form>
+    </section>
+
+    <section class="device-band" aria-label="TapTime device">
+      <div class="shell device-stage">
         <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
         <div class="device-shadow"></div>
         <model-viewer class="hero-model" src="cad/output/taptime-solid-case.glb" alt="Solid TapTime NFC case" auto-rotate loading="eager" camera-orbit="-32deg 58deg 118%" rotation-per-second="10deg" shadow-intensity="1.2" shadow-softness=".7" exposure="1.05" environment-image="neutral" interaction-prompt="none"></model-viewer>
         <div class="dimension dimension-x">56 mm</div>
         <div class="dimension dimension-z">17 mm</div>
-        <div class="stage-note"><span>01</span> A physical point of presence</div>
+        <div class="stage-note"><span>01</span> <span data-ro="Un punct fizic de prezență">A physical point of presence</span></div>
       </div>
     </section>
 
-    <section class="statement">
-      <div class="shell statement-grid"><p class="eyebrow light">The core idea</p><p>Attendance should feel like arriving—not like being watched.</p></div>
+    <section class="trust shell">
+      <p data-ro="Construit pentru locuri de muncă din România — clinici, șantiere, birouri și ateliere.">Built for Romanian workplaces — clinics, construction sites, offices, and workshops.</p>
     </section>
 
-    <section class="strip" aria-label="Key numbers">
-      <div class="shell">
-        <h2 class="band-claim">One tap replaces the whole timesheet chase—every shift, every doorway.</h2>
-        <div class="stat-strip">
-          <div class="stat"><strong>&lt; 2 s</strong><span>from doorway to recorded event</span></div>
-          <div class="stat"><strong>0</strong><span>apps to install or badges to issue</span></div>
-          <div class="stat"><strong>≈ €5</strong><span>in materials per checkpoint</span></div>
+    <section class="offer-banner shell" id="offer-banner">
+      <div class="offer-card">
+        <div>
+          <h2 data-ro="Ofertă de bun venit">Welcome offer</h2>
+          <p data-ro="Primul pas spre un pontaj fără efort începe aici. Îți ghidăm primul checkpoint de la cap la coadă — fișiere de print, scrierea tagului și playbook-ul pilotului de 4 săptămâni — gratuit.">The first step toward effortless attendance starts here. We guide your first checkpoint end to end — print files, tag writing, and the 4-week pilot playbook — at no cost.</p>
         </div>
-      </div>
-    </section>
-
-    <section class="section shell" id="how">
-      <div class="section-head"><p class="eyebrow"><span></span> One natural gesture</p><h2>TapTime turns arriving<br>into the record.</h2><p>TapTime uses the familiar NFC gesture already built into modern phones. The web app identifies the employee, confirms the location, and records the event.</p></div>
-      <div class="split">
-        <div class="media-card">
-          <span class="media-tag">TapTime in 2 seconds</span>
-          <div class="media-scene">
-            <div class="device-chip"><span>TAPTIME</span></div>
-            <div class="phone-mock">
-              <div class="screen-brand">You're checked in for</div>
-              <div class="screen-time">08:02</div>
-              <div class="screen-status">Front entrance</div>
-              <div class="screen-meta">Signed link · Exact time<br>Today · Check-in</div>
-              <div class="screen-button">Check out</div>
-            </div>
-          </div>
-        </div>
-        <div class="accordion">
-          <details open>
-            <summary><span class="step-pill">Step 01</span> Approach</summary>
-            <ul>
-              <li>Open the lightweight check-in page—no app, no login on day one</li>
-              <li>Any NFC phone from roughly the last eight years works</li>
-            </ul>
-          </details>
-          <details>
-            <summary><span class="step-pill">Step 02</span> Tap TapTime</summary>
-            <ul>
-              <li>The tag opens a signed workplace link that confirms the location</li>
-              <li>No device battery, no pairing, nothing to charge—ever</li>
-            </ul>
-          </details>
-          <details>
-            <summary><span class="step-pill">Step 03</span> Confirmed</summary>
-            <ul>
-              <li>A clear success screen records check-in or check-out with the exact time</li>
-              <li>Records land clean and payroll-ready, per person and per day</li>
-            </ul>
-          </details>
-        </div>
-      </div>
-      <div class="section-cta">
-        <a class="button cta-wide" href="#pilot">Start a pilot</a>
-        <p class="assurance">No apps to install · No badges to issue · No training session required</p>
+        <a class="button button-light" href="#demo" data-ro="Profită de ofertă">Claim the offer</a>
       </div>
     </section>
 
-    <section class="section shell" id="different">
-      <div class="section-head"><div><p class="eyebrow"><span></span> What makes TapTime different</p><h2>You can't misplace<br>a checkpoint.</h2></div><p>With other approaches, the record lives wherever people remember to put it. TapTime bolts the record to the doorway itself.</p></div>
-      <div class="compare">
-        <article><h3>Paper timesheets</h3><p>Easy to forget. Easy to fudge.</p></article>
-        <article><h3>Spreadsheet logins</h3><p>Easy to backfill on Friday.</p></article>
-        <article><h3>GPS tracking apps</h3><p>Easy to resent. It follows people home.</p></article>
-        <article><h3>Biometric kiosks</h3><p>Expensive, invasive, and IT-heavy.</p></article>
-      </div>
-      <div class="chaos-calm" aria-label="From messy records to one clear event">
-        <div class="chaos">
-          <span class="chip">Forgot to clock out</span>
-          <span class="chip">Who covered Tuesday?</span>
-          <span class="chip">8:00… or 8:30?</span>
-          <span class="chip">Overtime dispute</span>
-          <span class="chip">Timesheet missing</span>
-          <span class="chip">Manual entry</span>
-          <span class="chip">"I was definitely in"</span>
-          <span class="chip">Payroll correction</span>
-        </div>
-        <div class="calm-card">
-          <p class="eyebrow"><span></span> TapTime record</p>
-          <strong>Checked in · 08:02</strong>
-          <p>Front entrance · Signed link · Exact time</p>
-        </div>
+    <section class="section shell" id="benefits">
+      <div class="section-head"><h2><span data-ro="Echipele păstrează checkpoint-ul ">Teams keep the checkpoint </span><em data-ro="pe perete">on the wall</em></h2></div>
+      <div class="benefits-grid">
+        <article><div class="benefit-icon">⌁</div><h3 data-ro="Pontaj care nu dă greș">Taps that never miss</h3><p data-ro="Acuratețe constantă, automatizare completă și zero erori în condica de prezență. Tap-ul este înregistrarea.">Constant accuracy, full automation, and zero errors in the presence book. The tap is the record.</p></article>
+        <article><div class="benefit-icon">🗂</div><h3 data-ro="Condică completă">Records, complete</h3><p data-ro="Pontări, depontări, ore exacte și locații — totul ajunge în TapTime, per angajat și per zi.">Check-ins, check-outs, exact times, and locations — everything lands in TapTime, per person and per day.</p></article>
+        <article><div class="benefit-icon">🚀</div><h3 data-ro="Implementare fără bătăi de cap">Painless rollout</h3><p data-ro="Un start lin cu pași clari: printezi, montezi, distribui un link. Funcțional până la cafeaua de după-amiază.">A smooth start with clear steps: print, mount, share a link. Live before the afternoon coffee.</p></article>
       </div>
     </section>
 
-    <section class="section shell" id="uses">
-      <div class="section-head"><div><p class="eyebrow"><span></span> Get more from every doorway</p><h2>One checkpoint,<br>every kind of workplace.</h2></div><p>Mount TapTime where work actually starts. The gesture is the same everywhere; only the doorway changes.</p></div>
-      <div class="use-grid">
-        <article><h3>Clinics</h3><span class="use-meta">Tap point · Staff entrance</span><p>Shift handovers with exact times, without badge infrastructure in a care environment.</p></article>
-        <article><h3>Construction sites</h3><span class="use-meta">Tap point · Site cabin</span><p>A rugged, battery-free checkpoint that survives dust, gloves, and weather.</p></article>
-        <article><h3>Offices</h3><span class="use-meta">Tap point · Reception</span><p>Presence without turnstiles. One tap on the way to the coffee machine.</p></article>
-        <article><h3>Warehouses</h3><span class="use-meta">Tap point · Loading dock</span><p>Clear shift records across staggered start times and rotating crews.</p></article>
-        <article><h3>Retail floors</h3><span class="use-meta">Tap point · Back of house</span><p>Opening and closing staff leave a clean trail—no manager sign-off chase.</p></article>
-        <article><h3>Workshops</h3><span class="use-meta">Tap point · Tool room</span><p>Small teams get payroll-grade records with five euros of hardware.</p></article>
-      </div>
-    </section>
+    <section class="section shell" id="methods">
+      <div class="section-head"><h2><span data-ro="Cele mai apreciate metode de ">The most loved ways to </span><em data-ro="pontaj">tap in</em></h2><p data-ro="Un singur checkpoint, mai multe moduri de a-l folosi. Alege ce se potrivește fiecărei uși și fiecărei echipe.">One checkpoint, several ways to use it. Pick what fits each doorway and each team.</p></div>
 
-    <section class="hardware" id="hardware">
-      <div class="shell hardware-grid">
-        <div class="exploded" aria-label="Exploded TapTime enclosure diagram">
-          <div class="part front-part"><span class="case-wordmark">TAPTIME</span><i class="case-wall"></i></div>
-          <div class="part tag-part"><span>NFC</span></div>
-          <div class="part back-part"><i></i><i></i><i></i><i></i></div>
-          <div class="part-label label-front"><b>01</b> 11 mm front case</div>
-          <div class="part-label label-tag"><b>02</b> Enclosed NFC module</div>
-          <div class="part-label label-back"><b>03</b> 6 mm magnetic rear case</div>
-        </div>
-        <div class="hardware-copy"><p class="eyebrow light">Print it this week</p><h2>Not a card.<br>A solid checkpoint.</h2><p>A substantial two-piece case encloses the NFC module completely. The 17 mm body feels like a small appliance in the hand, while the removable rear gives access to the tag and mounting hardware.</p>
-          <dl><div><dt>56 × 56 × 17 mm</dt><dd>Brick-like depth with a compact footprint</dd></div><div><dt>Printed wordmark</dt><dd>Recessed TAPTIME branding built into the front case</dd></div><div><dt>Internal NFC cradle</dt><dd>The 25 mm tag is protected inside the body</dd></div><div><dt>Dual mounting</dt><dd>15 mm magnets or two countersunk screws</dd></div></dl>
-          <a class="button button-gold" href="cad/output/taptime-print-pack.zip" download>Download print pack <span>↓</span></a>
-        </div>
-        <div class="model-lab">
-          <div class="model-copy"><p class="eyebrow light">Interactive prototype</p><h3>Turn it around.</h3><p>Drag to rotate the assembled case. Scroll or pinch to zoom. This viewer uses the same front and rear geometry as the printable STL files.</p><div class="model-downloads"><a class="button button-gold" href="cad/output/taptime-solid-case.glb" download>Download GLB model <span>↓</span></a><a class="button button-outline" href="cad/output/taptime-front-case.stl" download>Front case STL <span>↓</span></a><a class="button button-outline" href="cad/output/taptime-rear-case.stl" download>Rear case STL <span>↓</span></a></div></div>
-          <model-viewer src="cad/output/taptime-solid-case.glb" alt="Interactive 3D model of the solid TapTime NFC case with recessed TapTime wordmark" camera-controls auto-rotate loading="eager" camera-orbit="0deg 28deg 88%" rotation-per-second="14deg" shadow-intensity="1" shadow-softness=".8" exposure="1.05" environment-image="neutral" interaction-prompt="auto" touch-action="pan-y">
-            <div class="model-loading" slot="poster">Loading 3D case…</div>
-          </model-viewer>
-        </div>
-      </div>
-    </section>
-
-    <section class="section shell" id="team-gets">
-      <div class="section-head"><div><p class="eyebrow"><span></span> What your team gets</p><h2>One box on the wall.<br>One link in the pocket.</h2></div><p>Everything comes from this project—hardware you print in-house and a small web flow you host yourself.</p></div>
-      <div class="team-gets">
-        <article>
-          <div class="card-visual"><div class="device-chip big"><span>TAPTIME</span></div></div>
-          <h3>The TapTime checkpoint</h3>
-          <ul class="gets-list">
-            <li>Solid 56 × 56 × 17 mm two-piece printed case</li>
-            <li>Enclosed 25 mm NFC module — no battery, no charging, ever</li>
-            <li>Magnetic or countersunk-screw mounting</li>
-            <li>Recessed wordmark you can rebrand per site</li>
+      <div class="method-card">
+        <div class="method-visual"><div class="duo"><div class="device-chip"><span>TAPTIME</span></div><div class="phone-mock"><div class="screen-brand" data-ro="Ești pontat de la">You're checked in for</div><div class="screen-time">08:02</div><div class="screen-status" data-ro="Intrarea principală">Front entrance</div><div class="screen-meta" data-ro="Link semnat · Oră exactă&lt;br&gt;Azi · Pontare">Signed link · Exact time<br>Today · Check-in</div><div class="screen-button" data-ro="Depontare">Check out</div></div></div></div>
+        <div class="method-copy">
+          <h3 data-ro="Pontaj prin NFC">Tap by NFC</h3>
+          <p data-ro="Angajații tăi se pontează ținând telefonul lângă checkpoint. Ușor, rapid și eficient.">Your employees check in by holding their phone to the checkpoint. Easy, fast, and efficient.</p>
+          <ul class="check-list">
+            <li data-ro="Pontaj digital fără complicații">Digital attendance with no complications</li>
+            <li data-ro="Gata în câteva minute — scrii tagul, montezi carcasa">Set up in minutes — write the tag, mount the case</li>
+            <li data-ro="Fără baterie, fără încărcare, niciodată">No device battery, no charging, ever</li>
+            <li data-ro="Merge cu orice telefon NFC din ultimii opt ani">Works with any NFC phone from the last eight years</li>
           </ul>
-        </article>
-        <article>
-          <div class="card-visual">
-            <div class="phone-mock">
-              <div class="screen-brand">You're checked in for</div>
-              <div class="screen-time">08:02</div>
-              <div class="screen-status">Front entrance</div>
-              <div class="screen-meta">Signed link · Exact time<br>Today · Check-in</div>
-              <div class="screen-button">Check out</div>
-            </div>
-          </div>
-          <h3>The check-in flow</h3>
-          <ul class="gets-list">
-            <li>Opens in the browser — nothing to install, iOS and Android</li>
-            <li>Signed link per checkpoint confirms the location</li>
-            <li>Check-in and check-out with the exact time</li>
-            <li>Clean records, ready for payroll review</li>
+        </div>
+      </div>
+
+      <div class="method-card">
+        <div class="method-visual"><div class="qr-mock" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
+        <div class="method-copy">
+          <h3 data-ro="Pontaj prin cod QR">Tap by QR code</h3>
+          <p data-ro="Un gest familiar, ca soluție de rezervă pentru telefoane fără NFC — printat direct pe checkpoint.">A familiar gesture as a fallback for phones without NFC — printed right on the checkpoint.</p>
+          <ul class="check-list">
+            <li data-ro="Fără echipament suplimentar — codul vine pe carcasă">No extra hardware — the code ships on the case</li>
+            <li data-ro="Deschide același link semnat de pontaj">Opens the same signed check-in link</li>
+            <li data-ro="Perfect pentru vizitatori și telefoane mai vechi">Perfect for visitors and older phones</li>
+            <li data-ro="Un singur gest, aceeași condică curată">One gesture, the same clean record</li>
           </ul>
-        </article>
+        </div>
+      </div>
+
+      <div class="method-card">
+        <div class="method-visual"><div class="browser-mock"><div class="bar"><i></i><i></i><i></i></div><div class="page"><div class="row"><span>Ana-Maria P.</span><span><b data-ro="Pontat · 08:02">Checked in · 08:02</b></span></div><div class="row"><span>Mihai D.</span><span><b data-ro="Pontat · 08:11">Checked in · 08:11</b></span></div><div class="row"><span>Ioana V.</span><span data-ro="Zi remote">Remote day</span></div></div></div></div>
+        <div class="method-copy">
+          <h3 data-ro="Pontaj prin web">Web check-in</h3>
+          <p data-ro="Pentru zilele remote și hibride, același flux rulează în orice browser — fără niciun echipament.">For remote and hybrid days, the same flow runs in any browser — no equipment needed at all.</p>
+          <ul class="check-list">
+            <li data-ro="Pontajul are loc prin linkul personal">Check-in happens through the personal link</li>
+            <li data-ro="Nu ai nevoie de echipamente suplimentare">No extra equipment required</li>
+            <li data-ro="Flexibilitate maximă și transparență">Maximum flexibility and transparency</li>
+            <li data-ro="Perfect pentru echipe hibride și remote">Perfect for hybrid and remote teams</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="method-card">
+        <div class="method-visual"><div class="site-chips"><span><b>01</b> <span data-ro="Intrarea principală · Birou Cluj">Front entrance · Cluj office</span></span><span><b>02</b> <span data-ro="Container șantier · Florești">Site cabin · Florești</span></span><span><b>03</b> <span data-ro="Magazie · Atelier">Tool room · Workshop</span></span></div></div>
+        <div class="method-copy">
+          <h3 data-ro="Mai multe uși și locații">Multi-door &amp; multi-site</h3>
+          <p data-ro="Vrei condici curate pe clădiri și șantiere? Printezi câte un checkpoint pentru fiecare ușă.">Want clean records across buildings and sites? Print one checkpoint per doorway.</p>
+          <ul class="check-list">
+            <li data-ro="Fiecare tag are propriul link semnat de locație">Each tag carries its own signed location link</li>
+            <li data-ro="Înregistrările rămân separate pe locație și ușă">Records stay separated per site and doorway</li>
+            <li data-ro="Adaugi o ușă cu circa 5 € în materiale">Add a doorway for about €5 in materials</li>
+            <li data-ro="Revoci sau rotești linkurile vechi oricând, din server">Revoke or rotate old links server-side any time</li>
+          </ul>
+        </div>
       </div>
     </section>
 
-    <section class="section shell" id="why-teams">
-      <div class="split">
-        <div class="media-card">
-          <div class="media-scene">
-            <div class="calm-card">
-              <p class="eyebrow"><span></span> TapTime record</p>
-              <strong>Checked in · 08:02</strong>
-              <p>Front entrance · Signed link · Exact time</p>
-            </div>
-          </div>
+    <section class="section shell" id="record">
+      <div class="record-split">
+        <div>
+          <p class="eyebrow"><span></span> <span data-ro="Condica de prezență">The presence book</span></p>
+          <h2 data-ro="Fiecare tap ajunge într-o condică curată">Every tap lands in one clean record</h2>
+          <p data-ro="TapTime centralizează automat toate datele de prezență — pontări, depontări, ore exacte și locații — și le transformă într-un document pe care salarizarea chiar îl poate citi.">TapTime centralizes all attendance data automatically — check-ins, check-outs, exact times, and locations — and turns it into a document payroll can actually read.</p>
+          <a class="button" href="#demo" data-ro="Solicită demo →">Request a demo →</a>
         </div>
-        <div class="split-copy">
-          <h2>Why teams<br>choose TapTime</h2>
-          <ul class="bullet-list">
-            <li><strong>Presence that sticks:</strong> arriving is the gesture, so the record takes care of itself—no forms at 7 a.m., no sign-off chase at month end.</li>
-            <li><strong>Simple, sustainable investment:</strong> print the hardware, host a small web app. No per-seat fees, no subscriptions, no hidden costs.</li>
-            <li><strong>Honest by design:</strong> records who, where, and when—nothing else. No GPS trails, no biometrics, no cameras.</li>
-          </ul>
-          <a class="button cta-wide" href="#contact">Talk to us</a>
+        <div class="record-mock" aria-label="Example presence book">
+          <div class="rm-head" data-ro="Condica de prezență — azi">Presence book — today</div>
+          <div class="rm-row head"><span data-ro="Angajat">Employee</span><span data-ro="Intrare">In</span><span data-ro="Ieșire">Out</span><span data-ro="Unde">Where</span></div>
+          <div class="rm-row"><span>Ana-Maria P.</span><span>08:02</span><span>16:04</span><span data-ro="Intrare">Front</span></div>
+          <div class="rm-row"><span>Mihai D.</span><span>08:11</span><span>16:32</span><span data-ro="Intrare">Front</span></div>
+          <div class="rm-row"><span>Ioana V.</span><span>09:00</span><span>17:01</span><span>Web</span></div>
+          <div class="rm-row"><span>Radu C.</span><span>07:54</span><span>15:58</span><span data-ro="Șantier 02">Site 02</span></div>
         </div>
       </div>
     </section>
 
-    <section class="section shell" id="rollout">
-      <div class="section-head"><div><p class="eyebrow"><span></span> Rollout is straightforward</p><h2>Live before<br>the afternoon coffee.</h2></div><p>No infrastructure, no IT project, no training session. One checkpoint per doorway and a link your team already knows how to open.</p></div>
-      <div class="steps">
-        <article><span class="step-no">01</span><div class="step-icon">⎙</div><h3>Print & mount</h3><p>Print the case, write the pilot URL to the tag, and stick it by the door—magnets or screws.</p></article>
-        <article><span class="step-no">02</span><div class="step-icon">⇥</div><h3>Share the link</h3><p>Employees bookmark the check-in page. No app store, no MDM, no accounts to provision on day one.</p></article>
-        <article><span class="step-no">03</span><div class="step-icon">✓</div><h3>Tap & go</h3><p>The first tap takes a minute to try. Every tap after takes two seconds.</p></article>
-      </div>
-      <div class="section-cta">
-        <a class="button cta-wide" href="#contact">Plan your rollout</a>
-        <p class="assurance">Add doorways by printing more cases · Revoke old links server-side any time</p>
+    <section class="section shell" id="modules">
+      <div class="section-head"><h2><span data-ro="Un singur checkpoint pentru ">One checkpoint for </span><em data-ro="tot ce înseamnă pontaj">everything attendance</em></h2></div>
+      <div class="modules-grid">
+        <article><h3 data-ro="Pontaj">Tap</h3><p data-ro="Un checkpoint NFC fizic cu variante QR și web — un gest natural la ușă.">A physical NFC checkpoint with QR and web fallbacks — one natural gesture at the door.</p><a href="#methods" data-ro="Află mai mult →">Learn more →</a></article>
+        <article><h3 data-ro="Condică">Records</h3><p data-ro="Condica se completează singură: cine, unde, când, intrare sau ieșire. Gata de export pentru salarizare.">The presence book fills itself: who, where, when, in or out. Export-ready for payroll.</p><a href="#record" data-ro="Află mai mult →">Learn more →</a></article>
+        <article><h3>Hardware</h3><p data-ro="O carcasă printată solidă de 56 × 56 × 17 mm cu modulul NFC complet închis. O printezi săptămâna asta.">A solid 56 × 56 × 17 mm printed case with the NFC module fully enclosed. Print it this week.</p><a href="cad/output/taptime-print-pack.zip" download data-ro="Descarcă pachetul de print →">Download the print pack →</a></article>
+        <article><h3 data-ro="Multi-locație">Multi-site</h3><p data-ro="Câte un checkpoint pentru fiecare ușă, fiecare cu linkul lui semnat. Extinzi printând mai multe.">One checkpoint per doorway, each with its own signed location link. Scale by printing more.</p><a href="#methods" data-ro="Află mai mult →">Learn more →</a></article>
+        <article><h3 data-ro="Playbook de pilot">Pilot playbook</h3><p data-ro="Un plan ghidat de 4 săptămâni: printare și programare, test cu echipa, măsurare și învățare. O intrare, o echipă.">A guided 4-week plan: print &amp; program, team test, measure &amp; learn. One entrance, one team.</p><a href="#pilot" data-ro="Află mai mult →">Learn more →</a></article>
+        <article><h3 data-ro="Securitate onestă">Honest security</h3><p data-ro="Fără urme GPS, fără biometrie, fără camere — și un model onest despre ce dovedește (și ce nu) un tap.">No GPS trails, no biometrics, no cameras — and an honest model of what a tap does and doesn't prove.</p><a href="#faq" data-ro="Află mai mult →">Learn more →</a></article>
       </div>
     </section>
 
-    <section class="section shell" id="offer">
-      <div class="offer-grid">
-        <div><p class="eyebrow"><span></span> Everything included</p><h2>Run the whole pilot<br>for the price of lunch.</h2><p>TapTime's MVP is deliberately cheap and open. Print the case, program a tag, point it at the web flow—done.</p>
-          <ul class="offer-list">
-            <li><strong>Print pack</strong><span>Front and rear STL files, tuned for a standard FDM printer</span></li>
-            <li><strong>NFC spec</strong><span>25 mm NTAG-class tag, written with your signed pilot URL</span></li>
-            <li><strong>4-week playbook</strong><span>The pilot plan below, ready to run with one team</span></li>
-            <li><strong>Full proposal</strong><span>Architecture, honesty caveats, and the path to production</span></li>
-          </ul>
-          <div class="hero-actions">
-            <a class="button button-gold" href="cad/output/taptime-print-pack.zip" download>Download print pack <span>↓</span></a>
-            <a class="text-link" href="TapTime-Workplace-Attendance-Proposal.pdf" target="_blank">Read the proposal <span>↗</span></a>
-          </div>
+
+    <section class="section shell" id="support">
+      <div class="section-head"><h2><span data-ro="Suport și siguranță. ">Support and safety. </span><em data-ro="Pe primul loc.">First.</em></h2></div>
+      <div class="support-grid">
+        <article><h3 data-ro="Onboarding ghidat">Guided onboarding</h3><p data-ro="Pași clari și ajutor direct de la cei care au construit TapTime — de la primul print la primul export pentru salarizare.">Clear steps and direct help from the people who built TapTime — from first print to first payroll export.</p><a href="#contact" data-ro="Începe acum">Start now</a></article>
+        <article><h3 data-ro="Datele tale, în siguranță">Your data, safe</h3><p data-ro="Se stochează doar evenimentul: cine, unde, când, intrare sau ieșire. Linkuri semnate per checkpoint, revocabile din server. Fără niciun fel de tracking.">Only the event is stored: who, where, when, in or out. Signed links per checkpoint, revocable server-side. No tracking of any kind.</p><a href="#faq" data-ro="Vezi detalii">See details</a></article>
+        <article><h3 data-ro="Fără lock-in, niciodată">No lock-in, ever</h3><p data-ro="Propunerea, fișierele de print și sursele CAD vin la pachet cu proiectul. Echipa ta deține fiecare strat.">The proposal, print files, and CAD sources ship with the project. Your team owns every layer of the stack.</p><a href="TapTime-Workplace-Attendance-Proposal.pdf" target="_blank" data-ro="Citește propunerea">Read the proposal</a></article>
+      </div>
+    </section>
+
+    <section class="section shell">
+      <div class="recap">
+        <div>
+          <h2 data-ro="Uite cu ce te ajută TapTime">Here's how TapTime helps</h2>
+          <p data-ro="Fiecare componentă îți economisește timp pe care îl poți pune înapoi în proiectele care contează. Scapă de alergătura tradițională după pontaj.">Every piece saves time you can put back into the projects that matter. Ditch the traditional attendance chase.</p>
+          <a class="button" href="#demo" data-ro="Solicită demo →">Request a demo →</a>
         </div>
-        <div class="stat-stack">
-          <div class="stat"><strong>&lt; 2 s</strong><span>from doorway to recorded event</span></div>
-          <div class="stat"><strong>0</strong><span>batteries, chargers, or subscriptions</span></div>
-          <div class="stat"><strong>≈ €5</strong><span>in materials per checkpoint</span></div>
-          <div class="stat"><strong>4 weeks</strong><span>to a validated pilot with one team</span></div>
-        </div>
+        <ul class="check-list">
+          <li data-ro="Pontaj intuitiv, rapid și securizat — fără fișe de pontaj pe hârtie">Intuitive, fast, and secure check-in — no paper timesheets</li>
+          <li data-ro="Condica de prezență se generează singură, gata de salarizare">The presence book generates itself, payroll-ready</li>
+          <li data-ro="Mai multe uși și locații din prima zi">Multi-door and multi-site from day one</li>
+          <li data-ro="Hardware fără baterii, printat cu circa 5 €">Battery-free hardware you print for about €5</li>
+          <li data-ro="Un model de securitate onest, documentat în propunere">An honest security model, documented in the proposal</li>
+        </ul>
       </div>
     </section>
 
     <section class="section shell" id="pilot">
       <div class="pilot-card">
-        <div><p class="eyebrow light">MVP path</p><h2>One entrance.<br>One team. Four weeks.</h2><p>Validate the behavior before investing in custom hardware. Start with an NFC tag, this enclosure, and a small web flow.</p><a class="button button-gold" href="TapTime-Workplace-Attendance-Proposal.pdf" target="_blank">Read the full proposal <span>↗</span></a></div>
-        <ol><li><span>Week 1</span><strong>Print & program</strong><p>Print the enclosure and write the pilot URL to the NFC tag.</p></li><li><span>Week 2</span><strong>Team test</strong><p>Enroll 5–10 employees and observe the entry flow.</p></li><li><span>Weeks 3–4</span><strong>Measure & learn</strong><p>Track successful taps, corrections, and payroll usefulness.</p></li></ol>
+        <div><p class="eyebrow"><span></span> <span data-ro="Drumul MVP">MVP path</span></p><h2 data-ro="O intrare. O echipă. Patru săptămâni.">One entrance. One team. Four weeks.</h2><p data-ro="Validează comportamentul înainte să investești în hardware dedicat. Începe cu un tag NFC, această carcasă și un mic flux web.">Validate the behavior before investing in custom hardware. Start with an NFC tag, this enclosure, and a small web flow.</p><a class="button" href="TapTime-Workplace-Attendance-Proposal.pdf" target="_blank" data-ro="Citește propunerea completă ↗">Read the full proposal ↗</a></div>
+        <ol><li><span data-ro="Săpt. 1">Week 1</span><strong data-ro="Printare și programare">Print &amp; program</strong><p data-ro="Printează carcasa și scrie URL-ul pilotului pe tagul NFC.">Print the enclosure and write the pilot URL to the NFC tag.</p></li><li><span data-ro="Săpt. 2">Week 2</span><strong data-ro="Test cu echipa">Team test</strong><p data-ro="Înrolează 5–10 angajați și observă fluxul de intrare.">Enroll 5–10 employees and observe the entry flow.</p></li><li><span data-ro="Săpt. 3–4">Weeks 3–4</span><strong data-ro="Măsoară și învață">Measure &amp; learn</strong><p data-ro="Urmărește tap-urile reușite, corecțiile și utilitatea pentru salarizare.">Track successful taps, corrections, and payroll usefulness.</p></li></ol>
       </div>
-      <div class="caveat"><strong>MVP honesty</strong><p>A passive NFC tap proves that a phone reached the tag. It does not, by itself, prove who held the phone. Production should add authenticated employee accounts, rotating signed links, audit logs, and a dedicated reader where stronger assurance is required.</p></div>
-    </section>
-
-    <section class="section shell" id="reasons">
-      <div class="section-head"><div><p class="eyebrow"><span></span> More reasons to mount one</p><h2>Built to be boring,<br>in the best way.</h2></div><p>The fewer moving parts a checkpoint has, the longer it keeps working. TapTime has almost none.</p></div>
-      <div class="steps reasons">
-        <article><span class="step-no">01</span><h3>No subscriptions</h3><p>The check-in flow is a small self-hosted web app. Print once, run forever.</p></article>
-        <article><span class="step-no">02</span><h3>Battery-free</h3><p>Passive NFC means the checkpoint is always on and never charged, for life.</p></article>
-        <article><span class="step-no">03</span><h3>Works across teams</h3><p>One checkpoint serves every phone. Add doorways by printing more cases.</p></article>
-      </div>
+      <div class="caveat"><strong data-ro="Onestitate MVP">MVP honesty</strong><p data-ro="Un tap NFC pasiv dovedește că un telefon a ajuns la tag. Nu dovedește, singur, cine ținea telefonul. Producția ar trebui să adauge conturi autentificate, linkuri semnate rotative, jurnale de audit și un cititor dedicat unde e nevoie de asigurări mai puternice.">A passive NFC tap proves that a phone reached the tag. It does not, by itself, prove who held the phone. Production should add authenticated employee accounts, rotating signed links, audit logs, and a dedicated reader where stronger assurance is required.</p></div>
     </section>
 
     <section class="section shell" id="faq">
-      <div class="section-head"><div><p class="eyebrow"><span></span> FAQs</p><h2>Asked before<br>every pilot.</h2></div><p>Short answers here—longer ones, including the security model, live in the proposal.</p></div>
+      <div class="section-head"><h2 data-ro="Întrebări frecvente">Frequently asked questions</h2></div>
       <div class="faq-list">
-        <details><summary>How is this different from a badge reader?</summary><p>A badge reader needs powered hardware, issued credentials, and IT integration. TapTime is a passive tag in a printed case: employees use the phone already in their pocket, and the web flow does the identifying.</p></details>
-        <details><summary>Can someone tap in for a colleague?</summary><p>A passive tap proves a phone reached the tag—not who held it. The pilot accepts that honestly; production adds authenticated accounts, rotating signed links, and audit logs to close the gap.</p></details>
-        <details><summary>Do employees need to install an app?</summary><p>No. Tapping opens a normal web page. Any NFC-capable phone from roughly the last eight years works out of the box.</p></details>
-        <details><summary>What happens if the checkpoint is damaged or lost?</summary><p>Print another case and write a fresh tag—about €5 and one coffee break. Old links can be revoked server-side at any time.</p></details>
-        <details><summary>What data does TapTime store?</summary><p>Only the event: who, where, when, in or out. No location tracking, no photos, no biometrics—the device can't sense anything at all.</p></details>
-        <details><summary>How do we cover multiple entrances or sites?</summary><p>Print one case per doorway and write each tag with its own signed link. Every checkpoint identifies its location, so records stay clean across buildings and sites.</p></details>
-        <details><summary>Can we put our own branding on the case?</summary><p>Yes—the wordmark is part of the printable model, not a sticker. Swap the recessed text in the CAD script and every case you print carries your brand.</p></details>
-        <details><summary>Can records feed into payroll?</summary><p>The pilot produces clean per-person, per-day records you can review or export. The production path in the proposal adds authenticated accounts and integration points for payroll systems.</p></details>
-        <details><summary>What does support look like?</summary><p>TapTime is an open prototype: the full proposal, print files, and CAD sources ship with the project, so your team owns every layer. Nothing is locked behind a vendor.</p></details>
+        <details><summary data-ro="Prin ce diferă de un cititor de carduri?">How is this different from a badge reader?</summary><p data-ro="Un cititor de carduri are nevoie de hardware alimentat, carduri emise și integrare IT. TapTime este un tag pasiv într-o carcasă printată: angajații folosesc telefonul pe care îl au deja în buzunar, iar fluxul web se ocupă de identificare.">A badge reader needs powered hardware, issued credentials, and IT integration. TapTime is a passive tag in a printed case: employees use the phone already in their pocket, and the web flow does the identifying.</p></details>
+        <details><summary data-ro="Poate cineva să ponteze pentru un coleg?">Can someone tap in for a colleague?</summary><p data-ro="Un tap pasiv dovedește că un telefon a ajuns la tag — nu cine îl ținea. Pilotul acceptă asta cu onestitate; producția adaugă conturi autentificate, linkuri semnate rotative și jurnale de audit pentru a închide breșa.">A passive tap proves a phone reached the tag—not who held it. The pilot accepts that honestly; production adds authenticated accounts, rotating signed links, and audit logs to close the gap.</p></details>
+        <details><summary data-ro="Angajații trebuie să instaleze o aplicație?">Do employees need to install an app?</summary><p data-ro="Nu. Tap-ul deschide o pagină web normală. Orice telefon cu NFC din ultimii aproximativ opt ani funcționează din prima.">No. Tapping opens a normal web page. Any NFC-capable phone from roughly the last eight years works out of the box.</p></details>
+        <details><summary data-ro="Ce se întâmplă dacă checkpoint-ul e deteriorat sau pierdut?">What happens if the checkpoint is damaged or lost?</summary><p data-ro="Printezi altă carcasă și scrii un tag nou — circa 5 € și o pauză de cafea. Linkurile vechi pot fi revocate din server oricând.">Print another case and write a fresh tag—about €5 and one coffee break. Old links can be revoked server-side at any time.</p></details>
+        <details><summary data-ro="Ce date stochează TapTime?">What data does TapTime store?</summary><p data-ro="Doar evenimentul: cine, unde, când, intrare sau ieșire. Fără urmărirea locației, fără poze, fără biometrie — dispozitivul nu poate percepe absolut nimic.">Only the event: who, where, when, in or out. No location tracking, no photos, no biometrics—the device can't sense anything at all.</p></details>
+        <details><summary data-ro="Cum acoperim mai multe intrări sau locații?">How do we cover multiple entrances or sites?</summary><p data-ro="Printezi câte o carcasă pentru fiecare ușă și scrii fiecare tag cu propriul link semnat. Fiecare checkpoint își identifică locația, deci condicile rămân curate pe clădiri și șantiere.">Print one case per doorway and write each tag with its own signed link. Every checkpoint identifies its location, so records stay clean across buildings and sites.</p></details>
+        <details><summary data-ro="Putem pune propriul branding pe carcasă?">Can we put our own branding on the case?</summary><p data-ro="Da — wordmark-ul face parte din modelul printabil, nu e un sticker. Schimbi textul în relief din scriptul CAD și fiecare carcasă printată îți poartă brandul.">Yes—the wordmark is part of the printable model, not a sticker. Swap the recessed text in the CAD script and every case you print carries your brand.</p></details>
+        <details><summary data-ro="Pot ajunge datele în salarizare?">Can records feed into payroll?</summary><p data-ro="Pilotul produce înregistrări curate per angajat și per zi, pe care le poți verifica sau exporta. Drumul spre producție din propunere adaugă conturi autentificate și puncte de integrare cu sistemele de salarizare.">The pilot produces clean per-person, per-day records you can review or export. The production path in the proposal adds authenticated accounts and integration points for payroll systems.</p></details>
       </div>
     </section>
 
-    <section class="statement contact-band" id="contact">
-      <div class="shell statement-grid"><p class="eyebrow light">Talk to our team</p><div><p>Ready to make presence physical?</p><p class="contact-note">Tell us about your entrance, your team size, and how payroll runs today—we'll shape the four-week pilot around it.</p><div class="hero-actions"><a class="button" href="mailto:pilots@taptime.app?subject=TapTime%20pilot">Email pilots@taptime.app <span>↗</span></a><a class="button button-outline" href="TapTime-Workplace-Attendance-Proposal.pdf" target="_blank">Read the proposal <span>↗</span></a></div></div></div>
-    </section>
-
-    <section class="statement final-cta">
-      <div class="shell statement-grid"><p class="eyebrow light">Ready when you are</p><div><p>Put a checkpoint on the wall this week.</p><div class="hero-actions"><a class="button" href="cad/output/taptime-print-pack.zip" download>Download print pack <span>↓</span></a><a class="button button-outline" href="#contact">Talk to us <span>→</span></a></div></div></div>
+    <section class="final-band" id="contact">
+      <div class="shell">
+        <h2 data-ro="Ești gata să începi?">Ready to start?</h2>
+        <p data-ro="Simplifică și digitalizează pontajul în compania ta și lasă echipa să se concentreze pe proiectele care chiar contează.">Simplify and digitize attendance in your company, and let the team focus on the projects that actually matter.</p>
+        <div class="actions">
+          <a class="button" href="#demo" data-ro="Solicită demo →">Request a demo →</a>
+          <a class="button button-outline" href="cad/output/taptime-print-pack.zip" download data-ro="Începe gratuit — descarcă pachetul de print">Start free — download the print pack</a>
+        </div>
+      </div>
     </section>
   </main>
 
-  <footer class="shell"><a class="brand" href="#top"><span class="brand-mark">T</span><span>TapTime</span></a><p>Physical presence. Clear records.</p><p>Prototype · August 2026</p></footer>
+  <footer class="fat-footer">
+    <div class="shell">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand"><span class="brand-mark">T</span><span>TapTime</span></div>
+          <p data-ro="Checkpoint-ul fizic pentru pontaj digital. Prezență fizică, condică clară. Prototip · August 2026.">The physical checkpoint for digital attendance. Physical presence, clear records. Prototype · August 2026.</p>
+        </div>
+        <div>
+          <h4 data-ro="Produs">Product</h4>
+          <ul>
+            <li><a href="#methods" data-ro="Metode de pontaj">Tap methods</a></li>
+            <li><a href="#record" data-ro="Condica de prezență">Presence book</a></li>
+            <li><a href="#modules" data-ro="Toate modulele">All modules</a></li>
+            <li><a href="#pilot" data-ro="Playbook de pilot">Pilot playbook</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 data-ro="Fișiere utile">Useful files</h4>
+          <ul>
+            <li><a href="TapTime-Workplace-Attendance-Proposal.pdf" target="_blank" data-ro="Propunerea completă (PDF)">Full proposal (PDF)</a></li>
+            <li><a href="cad/output/taptime-print-pack.zip" download data-ro="Pachet de print (ZIP)">Print pack (ZIP)</a></li>
+            <li><a href="cad/output/taptime-front-case.stl" download data-ro="STL carcasă față">Front case STL</a></li>
+            <li><a href="cad/output/taptime-rear-case.stl" download data-ro="STL carcasă spate">Rear case STL</a></li>
+            <li><a href="cad/output/taptime-solid-case.glb" download data-ro="Model 3D (GLB)">3D model (GLB)</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 data-ro="Suport">Support</h4>
+          <ul>
+            <li><a href="mailto:pilots@taptime.app">pilots@taptime.app</a></li>
+            <li><a href="#faq" data-ro="Întrebări frecvente">FAQ</a></li>
+            <li><a href="#support" data-ro="Siguranța datelor">Data safety</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span data-ro="© TapTime — prototip. Toate fișierele deschise, fără lock-in.">© TapTime — prototype. All files open, no lock-in.</span>
+        <span data-ro="Făcut cu un singur tap la ușă.">Made with one tap at the door.</span>
+      </div>
+    </div>
+  </footer>
+
+  <a class="offer-toast" href="#offer-banner"><b data-ro="Ofertă de bun venit">Welcome offer</b> <span data-ro="— pilot ghidat de 4 săptămâni">— guided 4-week pilot</span></a>
+  <a class="chat-bubble" href="mailto:pilots@taptime.app" aria-label="Email the pilot team">✉</a>
+
   <script type="module" src="webgl-grid.js"></script>
   <script src="app.js"></script>
 </body>

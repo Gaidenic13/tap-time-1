@@ -28,7 +28,7 @@ const initWebGL = () => {
   }
 
   const scene = new THREE.Scene();
-  scene.fog = new THREE.FogExp2(0xf3f1ec, 0.0015);
+  scene.fog = new THREE.FogExp2(0xf5f3fb, 0.0015);
 
   const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 2000);
   camera.position.z = 200;
@@ -48,7 +48,7 @@ const initWebGL = () => {
   }
   const gridGeometry = new THREE.BufferGeometry();
   gridGeometry.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
-  const gridMaterial = new THREE.LineBasicMaterial({ color: 0x121316, transparent: true, opacity: 0.26 });
+  const gridMaterial = new THREE.LineBasicMaterial({ color: 0x5b4bdb, transparent: true, opacity: 0.22 });
   const grid = new THREE.LineSegments(gridGeometry, gridMaterial);
   grid.position.y = -40;
   scene.add(grid);
@@ -77,7 +77,7 @@ const initWebGL = () => {
   const buildAssembly = ([frontText, rearText]) => {
     const front = new THREE.Mesh(
       parseSTL(frontText),
-      new THREE.MeshStandardMaterial({ color: 0x1e293b, roughness: 0.48, metalness: 0.04 })
+      new THREE.MeshStandardMaterial({ color: 0x272258, roughness: 0.48, metalness: 0.04 })
     );
     front.rotation.x = Math.PI;
     front.position.z = 17;
@@ -89,7 +89,7 @@ const initWebGL = () => {
 
     const nfc = new THREE.Mesh(
       new THREE.CylinderGeometry(12.5, 12.5, 0.7, 64),
-      new THREE.MeshStandardMaterial({ color: 0x2b5fe3, roughness: 0.55, metalness: 0.08 })
+      new THREE.MeshStandardMaterial({ color: 0x5b4bdb, roughness: 0.55, metalness: 0.08 })
     );
     nfc.rotation.x = Math.PI / 2;
     nfc.position.z = 13.1;
